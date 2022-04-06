@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoVueModel</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/AutoVueModel.js"></script>
+</head>
+
+<body>
+    <div class="group">
+        <label><h1>HTML INPUT</h1></label>
+        <textarea id="InputCode" class="code" type="text" rows="50">
+<div id="__PageContent__">
+    <label>EquipModelName:</label>
+    <input id="__EquipModelName__" type="text">
+    <input id="__EquipNo__" type="text">
+    <select id="__EquipModelTypeId__">
+        <option value="0">請選擇裝備類型</option>
+    </select>
+    <select id="__CalcyId__">
+        <option value="1">大於</option>
+        <option value="2">等於</option>
+        <option value="3">小於</option>
+    </select>
+    <input type="number" id="__Count__">
+    <button id="SearchButton">搜尋</button>
+</div>
+        </textarea>
+    </div>
+    <div class="group" style="width: 5%; flex-direction: inherit; flex-basis: content;">
+        <input type="button" value=">>" onclick="ConvertToVueModel()">
+    </div>
+    <div class="group">
+        <label><h1>VueModel OUTPUT</h1></label>
+        <textarea id="OutputCode" class="code" type="text" rows="50" readonly></textarea>
+    </div>
+
+
+    <div id="TargetHTMLCode" style="display: none;"></div>
+</body>
+
+</html>
