@@ -2,6 +2,10 @@ function ConvertToVueModel() {
     let input = document.getElementById('InputCode');
     let output = document.getElementById('OutputCode');
     let htmlCode = document.getElementById('TargetHTMLCode');
+    let vueModelName = document.getElementById('name').value;
+    let defaultUrl = document.getElementById('defaultUrl').value;
+    let pageData = document.getElementById('pageData').value;
+    let defaultValue = document.getElementById('defaultValue').value;
     let objList = [];
     let inputList = [];
     let textList = [];
@@ -37,7 +41,9 @@ function ConvertToVueModel() {
 
     }
 
-    var vueModelOutput = `var Updata = new VueModel('',{},{},'${contentId}')\n`;
+    var vueModelOutput = `var ${vueModelName != "" ? vueModelName : "Updata"} = `
+        + `new VueModel('${defaultUrl}',${pageData != "" ? `'${pageData}'` : "{}"},{},'${contentId}')\n`;
+
     var inputMult = "";
     var textMult = "";
     var select = "";
@@ -74,11 +80,15 @@ function ConvertToVueModel() {
     vueModelOutput += select;
 
     if (buttonList.length != 0) {
-        for(var i=0;i<buttonList.length;i++){
+        for (var i = 0; i < buttonList.length; i++) {
             button += `\t.AddV_Button('${buttonList[i]}', () => {})\n`
         }
     }
     vueModelOutput += button;
+
+    if(defaultValue != ""){
+        vueModelOutput += `\t.UpdateVueModel(${defaultValue})\n`;
+    }
 
     output.innerHTML = vueModelOutput;
 }
