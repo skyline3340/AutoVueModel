@@ -11,21 +11,44 @@ function ConvertToVueModel() {
     let textList = [];
     let selectList = [];
     let buttonList = [];
+    let radioList = [];
 
     htmlCode.innerHTML = input.value;
 
-    objList = htmlCode.querySelectorAll('*[id]');
+    objList = htmlCode.querySelectorAll('*[id]'); console.log(objList);
     var contentId = objList[0].id;
 
     for (var i = 1; i < objList.length; i++) {
         if (objList[i].id != undefined) {
             var objId = objList[i].id
             switch (objList[i].tagName) {
+                case "DIV":
+                    if (objList[i].children.length != 0 && i != objList.length -1) { console.log(objList[i])
+                        if (objList[i + 1].tagName == "INPUT") {
+                            if (objList[i + 1].type == "radio") {
+                                radioList.push([]);
+                                radioList[radioList.length - 1].push(objId);
+                                for (var j = 0; j < objList[i].children.length; j++) {
+                                    radioList[radioList.length - 1].push(objList[i + j + 1].id);
+                                }
+                            } else {
+                                textList.push(objId);
+                                break;
+                            }
+                        } else {
+                            textList.push(objId);
+                            break;
+                        }
+                        i += objList[i].children.length; console.log(objId)
+                        break;
+                    }
+                    textList.push(objId);
+                    break;
+                case "SPAN":
+                    textList.push(objId);
+                    break;
                 case "INPUT":
                     inputList.push(objId);
-                    break;
-                case "DIV":
-                    textList.push(objId);
                     break;
                 case "LABEL":
                     textList.push(objId);
@@ -48,6 +71,7 @@ function ConvertToVueModel() {
     var textMult = "";
     var select = "";
     var button = "";
+    var radio = "";
 
     if (inputList.length != 0) {
         inputMult = "\t.AddV_InputMult({\n";
@@ -65,19 +89,30 @@ function ConvertToVueModel() {
         }
         textMult += "\t})\n";
     }
-    vueModelOutput += textMult;
+    vueModelOutput += textMult; console.log(textList)
 
     if (selectList.length != 0) {
         for (var i = 0; i < selectList.length; i++) {
             if (document.getElementById(selectList[i]).children.length == 1) {
                 select += `\t.AddV_Select('${selectList[i]}','','','')\n`;
             } else {
-                select += `\t.AddV_SelectBind('${selectList[i]})\n`;
+                select += `\t.AddV_SelectBind('${selectList[i]}')\n`;
             }
         }
 
     }
     vueModelOutput += select;
+
+    if (radioList.length != 0) {
+        for (var i = 0; i < radioList.length; i++) {
+            radio += `\t.AddV_RadioBindMult('${radioList[i][0].replaceAll('_', '')}',{\n`;
+            for (var j = 1; j < radioList[i].length; j++) {
+                radio += `\t\t${radioList[i][j]}: '${document.getElementById(radioList[i][j]).value}',\n`;
+            }
+            radio += "\t)}\n";
+        }
+    }
+    vueModelOutput += radio;
 
     if (buttonList.length != 0) {
         for (var i = 0; i < buttonList.length; i++) {
@@ -86,7 +121,7 @@ function ConvertToVueModel() {
     }
     vueModelOutput += button;
 
-    if(defaultValue != ""){
+    if (defaultValue != "") {
         vueModelOutput += `\t.UpdateVueModel(${defaultValue})\n`;
     }
 
