@@ -13,7 +13,7 @@ function ConvertToVueModel() {
     let buttonList = [];
     let radioList = [];
 
-    htmlCode.innerHTML = input.value;
+    htmlCode.innerHTML = input.value.replaceAll('src=', 'alt=');
 
     objList = htmlCode.querySelectorAll('*[id]'); console.log(objList);
     var contentId = objList[0].id;
@@ -23,7 +23,8 @@ function ConvertToVueModel() {
             var objId = objList[i].id
             switch (objList[i].tagName) {
                 case "DIV":
-                    if (objList[i].children.length != 0 && i != objList.length -1) { console.log(objList[i])
+                    if (objList[i].children.length != 0 && i != objList.length - 1) {
+                        console.log(objList[i])
                         if (objList[i + 1].tagName == "INPUT") {
                             if (objList[i + 1].type == "radio") {
                                 radioList.push([]);
@@ -47,6 +48,9 @@ function ConvertToVueModel() {
                 case "SPAN":
                     textList.push(objId);
                     break;
+                case "TEXTAREA":
+                    inputList.push(objId);
+                    break;
                 case "INPUT":
                     inputList.push(objId);
                     break;
@@ -65,8 +69,9 @@ function ConvertToVueModel() {
     }
 
     var vueModelOutput = `var ${vueModelName != "" ? vueModelName : "Updata"} = `
-        + `new VueModel('${defaultUrl}',${pageData != "" ? `'${pageData}'` : "{}"},{},'${contentId}')\n`;
+        + `new VueModel(${defaultUrl != "" ? defaultUrl : `''`}, ${pageData != "" ? `'${pageData}'` : "{}"}, {}, '${contentId}')\n`;
 
+    var ajax = "";
     var inputMult = "";
     var textMult = "";
     var select = "";
@@ -94,7 +99,8 @@ function ConvertToVueModel() {
     if (selectList.length != 0) {
         for (var i = 0; i < selectList.length; i++) {
             if (document.getElementById(selectList[i]).children.length == 1) {
-                select += `\t.AddV_Select('${selectList[i]}','','','')\n`;
+                select += `\t.AddV_Select('${selectList[i]}', '', '', '')\n`;
+                ajax += `\t.Ajax({},'${selectList[i]}')\n`;
             } else {
                 select += `\t.AddV_SelectBind('${selectList[i]}')\n`;
             }
@@ -105,7 +111,7 @@ function ConvertToVueModel() {
 
     if (radioList.length != 0) {
         for (var i = 0; i < radioList.length; i++) {
-            radio += `\t.AddV_RadioBindMult('${radioList[i][0].replaceAll('_', '')}',{\n`;
+            radio += `\t.AddV_RadioBindMult('${radioList[i][0].replaceAll('_', '')}', {\n`;
             for (var j = 1; j < radioList[i].length; j++) {
                 radio += `\t\t${radioList[i][j]}: '${document.getElementById(radioList[i][j]).value}',\n`;
             }
@@ -125,5 +131,20 @@ function ConvertToVueModel() {
         vueModelOutput += `\t.UpdateVueModel(${defaultValue})\n`;
     }
 
-    output.innerHTML = vueModelOutput;
+    console.log(ajax);
+    if (ajax == "") {
+        if (defaultUrl != "") {
+            ajax += "\t.Ajax();";
+        } else {
+            ajax += "\t.VueInit();";
+        }
+    } else {
+        if (defaultUrl != "") {
+            ajax += "\t.Ajax();";
+        } else {
+            ajax += "\t;";
+        }
+    }
+
+    output.innerHTML = vueModelOutput + ajax;
 }

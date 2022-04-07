@@ -2,23 +2,23 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AutoVueModel</title>
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/AutoVueModel.js"></script>
+    <script src="./js/SvgModule.js"></script>
+    <script src="./js/index.js"></script>
 </head>
 
 <body>
     <div class="group" style="width: 10%; justify-content: center;">
         <label><h3>VueModelName:</h3></label>
-        <input id="name" type="text">
+        <input class="input" id="name" type="text">
         <label><h3>DefaultUrl:</h3></label>
-        <input id="defaultUrl" type="text">
+        <input class="input" id="defaultUrl" type="text">
         <label><h3>PageData:</h3></label>
-        <input id="pageData" type="text">
+        <input class="input" id="pageData" type="text">
         <label><h3>DefaultValue:</h3></label>
-        <input id="defaultValue" type="text">
+        <input class="input" id="defaultValue" type="text">
         
     </div>
     <div class="group">
@@ -28,16 +28,22 @@
         <textarea id="InputCode" class="code" type="text" rows="45"></textarea>
     </div>
     <div class="group" style="width: 5%; flex-direction: inherit; flex-basis: content;">
-        <input class="btn" type="button" value=">>" onclick="ConvertToVueModel()">
+        <button id="conBtn" class="conBtn" onclick="ConvertToVueModel()"></button>
     </div>
     <div class="group">
         <label>
             <h1>VueModel OUTPUT</h1>
         </label>
         <textarea id="OutputCode" class="code" type="text" rows="45" readonly></textarea>
+        <button id="copyBtn" class="copyBtn" onclick="copyCode('OutputCode')"></button>
     </div>
 
+    <div id="copyInfo" class="info">
+        <h3>Copy Successful!</h3>
+    </div>
     <div id="TargetHTMLCode" style="display: none;"></div>
+
+    <script src="./js/icon.js"></script>
 </body>
 
 </html>
