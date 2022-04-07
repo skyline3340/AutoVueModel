@@ -10,34 +10,48 @@
 </head>
 
 <body>
-    <div class="group" style="width: 10%; justify-content: center;">
-        <label><h3>VueModelName:</h3></label>
+    <div class="group" style="width: 10%; justify-content: center; margin-left: 1%;">
+        <label>
+            <h3>VueModelName:</h3>
+        </label>
         <input class="input" id="name" type="text">
-        <label><h3>DefaultUrl:</h3></label>
+        <label>
+            <h3>DefaultUrl:</h3>
+        </label>
         <input class="input" id="defaultUrl" type="text">
-        <label><h3>PageData:</h3></label>
+        <label>
+            <h3>PageData:</h3>
+        </label>
         <input class="input" id="pageData" type="text">
-        <label><h3>DefaultValue:</h3></label>
+        <label>
+            <h3>DefaultValue:</h3>
+        </label>
         <input class="input" id="defaultValue" type="text">
-        
+
     </div>
     <div class="group">
         <label>
             <h1>HTML INPUT</h1>
         </label>
-        <textarea id="InputCode" class="code" type="text" rows="45"></textarea>
+        <div class="codeDiv">
+            <textarea id="InputCode" class="code" type="text" rows="45"></textarea>
+        </div>
     </div>
     <div class="group" style="width: 5%; flex-direction: inherit; flex-basis: content;">
-        <button id="conBtn" class="conBtn" onclick="ConvertToVueModel()"></button>
+        <button id="conBtn" class="conBtn" onclick="ConvertToVueModel()" style="padding: 2px 2px 2px 2px;"></button>
     </div>
     <div class="group">
         <label>
             <h1>VueModel OUTPUT</h1>
         </label>
-        <textarea id="OutputCode" class="code" type="text" rows="45" readonly></textarea>
-        <button id="copyBtn" class="copyBtn" onclick="copyCode('OutputCode')"></button>
+        <div class="codeDiv" style="justify-content: flex-start;">
+            <textarea id="OutputCode" class="code" type="text" rows="45" readonly></textarea>
+        </div>
     </div>
 
+    <div class="group" style="width: 2%; flex-direction: column-reverse; margin-bottom: 3%;">
+        <button id="copyBtn" class="copyBtn" onclick="copyCode('OutputCode')"></button>
+    </div>
     <div id="copyInfo" class="info">
         <h3>Copy Successful!</h3>
     </div>
