@@ -16,7 +16,7 @@ function ConvertToVueModel() {
 
     htmlCode.innerHTML = input.value.replaceAll('src=', 'alt=');
 
-    objList = htmlCode.querySelectorAll('*[id]'); console.log(objList);
+    objList = htmlCode.querySelectorAll('*[id]');
     var contentId = objList[0].id;
 
     for (var i = 1; i < objList.length; i++) {
@@ -25,7 +25,6 @@ function ConvertToVueModel() {
             switch (objList[i].tagName) {
                 case "DIV":
                     if (objList[i].children.length != 0 && i != objList.length - 1) {
-                        console.log(objList[i])
                         if (objList[i + 1].tagName == "INPUT") {
                             if (objList[i + 1].type == "radio") {
                                 radioList.push([]);
@@ -47,7 +46,7 @@ function ConvertToVueModel() {
                             textList.push(objId);
                             break;
                         }
-                        i += objList[i].children.length; console.log(objId)
+                        i += objList[i].children.length;
                         break;
                     }
                     textList.push(objId);
@@ -102,7 +101,7 @@ function ConvertToVueModel() {
         }
         textMult += "\t})\n";
     }
-    vueModelOutput += textMult; console.log(textList)
+    vueModelOutput += textMult;
 
     if (selectList.length != 0) {
         for (var i = 0; i < selectList.length; i++) {
@@ -150,7 +149,6 @@ function ConvertToVueModel() {
         vueModelOutput += `\t.UpdateVueModel(${defaultValue})\n`;
     }
 
-    console.log(ajax);
     if (ajax == "") {
         if (defaultUrl != "") {
             ajax += "\t.Ajax();";
