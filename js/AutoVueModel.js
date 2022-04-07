@@ -12,6 +12,7 @@ function ConvertToVueModel() {
     let selectList = [];
     let buttonList = [];
     let radioList = [];
+    let checkList = [];
 
     htmlCode.innerHTML = input.value.replaceAll('src=', 'alt=');
 
@@ -31,6 +32,12 @@ function ConvertToVueModel() {
                                 radioList[radioList.length - 1].push(objId);
                                 for (var j = 0; j < objList[i].children.length; j++) {
                                     radioList[radioList.length - 1].push(objList[i + j + 1].id);
+                                }
+                            }else if(objList[i + 1].type == "checkbox"){
+                                checkList.push([]);
+                                checkList[checkList.length - 1].push(objId);
+                                for (var j = 0; j < objList[i].children.length; j++) {
+                                    checkList[checkList.length - 1].push(objList[i + j + 1].id);
                                 }
                             } else {
                                 textList.push(objId);
@@ -77,6 +84,7 @@ function ConvertToVueModel() {
     var select = "";
     var button = "";
     var radio = "";
+    var check = "";
 
     if (inputList.length != 0) {
         inputMult = "\t.AddV_InputMult({\n";
@@ -119,6 +127,17 @@ function ConvertToVueModel() {
         }
     }
     vueModelOutput += radio;
+
+    if (checkList.length != 0) {
+        for (var i = 0; i < checkList.length; i++) {
+            check += `\t.AddV_CheckboxBindMult('${checkList[i][0].replaceAll('_', '')}', {\n`;
+            for (var j = 1; j < checkList[i].length; j++) {
+                check += `\t\t${checkList[i][j]}: '${document.getElementById(checkList[i][j]).value}',\n`;
+            }
+            check += "\t)}\n";
+        }
+    }
+    vueModelOutput += check;
 
     if (buttonList.length != 0) {
         for (var i = 0; i < buttonList.length; i++) {
