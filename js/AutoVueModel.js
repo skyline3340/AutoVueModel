@@ -52,6 +52,12 @@ function ConvertToVueModel() {
                                     textList.push(objId);
                                     break;
                                 }
+                            }else if(objList[i + 1].type == "checkbox"){
+                                checkList.push([]);
+                                checkList[checkList.length - 1].push(objId);
+                                for (var j = 0; j < objList[i].children.length; j++) {
+                                    checkList[checkList.length - 1].push(objList[i + j + 1].id);
+                                }
                             } else {
                                 textList.push(objId);
                                 break;
