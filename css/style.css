@@ -29,8 +29,17 @@ label {
     text-align: center;
 }
 
+li {
+    display: block;
+    margin: .2em;
+}
+
+h4 {
+    display: contents;
+}
+
 .input {
-    width: 110%;
+    width: 100%;
     font-size: 1.5em;
     text-align: center;
 }
@@ -49,7 +58,7 @@ label {
     align-items: center;
 }
 
-.codeDiv{
+.codeDiv {
     width: 100%;
     display: flex;
     justify-content: flex-end;
@@ -69,7 +78,16 @@ label {
     width: 100%;
 }
 
-.show{
+.list {
+    display: flex;
+    flex-direction: column;
+    width: -webkit-fill-available;
+    background-color: white;
+    padding: .5em;
+    border: 1px black solid;
+}
+
+.show {
     display: flex;
     animation-name: show;
     animation-duration: 2s;
@@ -81,7 +99,7 @@ label {
         top: -8%;
     }
 
-    25%{
+    25% {
         top: 2%;
     }
 
@@ -89,7 +107,7 @@ label {
         top: 2%;
     }
 
-    100%{
+    100% {
         top: -8%
     }
 }

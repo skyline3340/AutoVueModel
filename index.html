@@ -11,6 +11,7 @@
 
 <body>
     <div class="group" style="width: 10%; justify-content: center; margin-left: 1%;">
+        <div id="borderTop"></div>
         <label>
             <h3>VueModelName:</h3>
         </label>
@@ -27,7 +28,22 @@
             <h3>DefaultValue:</h3>
         </label>
         <input class="input" id="defaultValue" type="text">
-
+        <label>
+            <h3>Id Filter:</h3>
+        </label>
+        <input class="input" id="idFilter" type="text" value="">
+        <label>
+            <h3>Enable:</h3>
+        </label>
+        <div class="list">
+            <li><input id="isText" type="checkbox" checked><h4>Text</h4></li>
+            <li><input id="isInput" type="checkbox" checked><h4>Input</h4></li>
+            <li><input id="isSelect" type="checkbox" checked><h4>Select</h4></li>
+            <li><input id="isRadio" type="checkbox" checked><h4>Radio</h4></li>
+            <li><input id="isCheckBox" type="checkbox" checked><h4>CheckBox</h4></li>
+            <li><input id="isButton" type="checkbox" checked><h4>Button</h4></li>
+        </div>
+        <div id="borderButtom"></div>
     </div>
     <div class="group">
         <label>
@@ -45,7 +61,7 @@
             <h1>VueModel OUTPUT</h1>
         </label>
         <div class="codeDiv" style="justify-content: flex-start;">
-            <textarea id="OutputCode" class="code" type="text" rows="45" readonly></textarea>
+            <textarea id="OutputCode" class="code" type="text" rows="45"></textarea>
         </div>
     </div>
 
