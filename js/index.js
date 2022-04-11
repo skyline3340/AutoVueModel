@@ -10,12 +10,19 @@ function copyCode(id) {
     }
 }
 
-function showPanel(id){
+function showPanel(id) {
     var panel = document.getElementById(id);
     panel.style['display'] = 'flex';
 }
 
-function closePanel(id){
+function closePanel(id) {
     var panel = document.getElementById(id);
     panel.style['display'] = 'none';
+}
+
+window.onload = function(){
+    var area = document.getElementById('closeSetArea');
+    area.addEventListener('click', function(event){
+        closePanel('settingPanel');
+    });
 }

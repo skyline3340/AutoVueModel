@@ -64,6 +64,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background: none;
+    border: 0;
+    border-radius: 50%;
+    padding: .3em;
+}
+
+.btn:hover{
+    background: gray;
 }
 
 .btn i{
@@ -103,7 +111,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: rgba(0, 0, 0, 0.5);
+    background: none;
     transition: .5s;
 }
 
