@@ -74,7 +74,11 @@ function ConvertToVueModel() {
                         inputList.push(objId);
                         break;
                     case "INPUT":
-                        inputList.push(objId);
+                        if(objList[i].type == 'button'){
+                            buttonList.push(objId);
+                        }else{
+                            inputList.push(objId);
+                        }                        
                         break;
                     case "LABEL":
                         textList.push(objId);
