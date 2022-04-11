@@ -142,7 +142,7 @@ function ConvertToVueModel() {
             for (var j = 1; j < radioList[i].length; j++) {
                 radio += `\t\t${radioList[i][j]}: '${document.getElementById(radioList[i][j]).value}',\n`;
             }
-            radio += "\t)}\n";
+            radio += "\t})\n";
         }
     }
     vueModelOutput += radio;
@@ -153,7 +153,7 @@ function ConvertToVueModel() {
             for (var j = 1; j < checkList[i].length; j++) {
                 check += `\t\t${checkList[i][j]}: '${document.getElementById(checkList[i][j]).value}',\n`;
             }
-            check += "\t)}\n";
+            check += "\t})\n";
         }
     }
     vueModelOutput += check;
