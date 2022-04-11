@@ -4,72 +4,165 @@
     <meta charset="UTF-8">
     <title>AutoVueModel</title>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/setPanel.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="./js/AutoVueModel.js"></script>
-    <script src="./js/SvgModule.js"></script>
     <script src="./js/index.js"></script>
 </head>
 
 <body>
-    <div class="group setting">
-        <label>
-            <h3>VueModelName:</h3>
-        </label>
-        <input class="input" id="name" type="text">
-        <label>
-            <h3>DefaultUrl:</h3>
-        </label>
-        <input class="input" id="defaultUrl" type="text">
-        <label>
-            <h3>PageData:</h3>
-        </label>
-        <input class="input" id="pageData" type="text">
-        <label>
-            <h3>DefaultValue:</h3>
-        </label>
-        <input class="input" id="defaultValue" type="text">
-        <label>
-            <h3>Id Filter:</h3>
-        </label>
-        <input class="input" id="idFilter" type="text" value="">
-        <label>
-            <h3>Enable:</h3>
-        </label>
-        <div class="list">
-            <li><input id="isText" type="checkbox" checked><h4>Text</h4></li>
-            <li><input id="isInput" type="checkbox" checked><h4>Input</h4></li>
-            <li><input id="isSelect" type="checkbox" checked><h4>Select</h4></li>
-            <li><input id="isRadio" type="checkbox" checked><h4>Radio</h4></li>
-            <li><input id="isCheckBox" type="checkbox" checked><h4>CheckBox</h4></li>
-            <li><input id="isButton" type="checkbox" checked><h4>Button</h4></li>
-        </div>
+    <div class="group" style="width: 2%; flex-direction: column; margin-top: 3%; margin-left: 1%;">
+        <button class="btn" onclick="showPanel('settingPanel')">
+            <i class="material-icons">settings</i>
+        </button>
     </div>
     <div class="group">
         <label>
             <h1>HTML INPUT</h1>
         </label>
         <div class="codeDiv">
-            <textarea id="InputCode" class="code" type="text" rows="45"></textarea>
+            <textarea id="InputCode" type="text" rows="45"></textarea>
         </div>
     </div>
     <div class="group" style="width: 5%; flex-direction: inherit; flex-basis: content;">
-        <button id="conBtn" class="conBtn" onclick="ConvertToVueModel()" style="padding: 2px 2px 2px 2px;"></button>
+        <button class="btn" onclick="ConvertToVueModel()">
+            <i class="medium material-icons">sync</i>
+        </button>
     </div>
     <div class="group">
         <label>
             <h1>VueModel OUTPUT</h1>
         </label>
         <div class="codeDiv" style="justify-content: flex-start;">
-            <textarea id="OutputCode" class="code" type="text" rows="45"></textarea>
+            <textarea id="OutputCode" type="text" rows="45"></textarea>
         </div>
     </div>
 
     <div class="group" style="width: 2%; flex-direction: column-reverse; margin-bottom: 3%; margin-right: 1%;">
-        <button id="copyBtn" class="copyBtn" onclick="copyCode('OutputCode')"></button>
+        <button class="btn" onclick="copyCode('OutputCode')">
+            <i class="material-icons">content_copy</i>
+        </button>
     </div>
-    <div id="copyInfo" class="info">
+    <div id="copyInfo" class="copyInfo">
         <h3>Copy Successful!</h3>
     </div>
     <div id="TargetHTMLCode" style="display: none;"></div>
+
+    <div class="panel" style="display: none;" id="settingPanel">
+        <div class="setPanel">
+            <div>
+                <label>
+                    <h2>SETTING</h2>
+                </label>
+            </div>
+            <div>
+                <div>
+                    <div>
+                        <label>
+                            <h3>VueModelName:</h3>
+                        </label>
+                        <input id="name" type="text">
+                    </div>
+                    <div>
+                        <label>
+                            <h3>DefaultUrl:</h3>
+                        </label>
+                        <input id="defaultUrl" type="text">
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label>
+                            <h3>PageData:</h3>
+                        </label>
+                        <input id="pageData" type="text">
+                    </div>
+                    <div>
+                        <label>
+                            <h3>DefaultValue:</h3>
+                        </label>
+                        <input id="defaultValue" type="text">
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label>
+                            <h3>Id Filter:</h3>
+                        </label>
+                        <input id="idFilter" type="text" value="">
+                    </div>
+                </div>
+            </div>
+            <label>
+                <h3>Enable:</h3>
+            </label>
+            <div style="border: 1px black solid;">
+                <div>
+                    <div>
+                        <h3>Text:</h3>
+                        <div class="checkBox">
+                            <label>
+                                <input id="isText" type="checkbox" checked>
+                                <span></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Input:</h3>
+                        <div class="checkBox">
+                            <label>
+                                <input id="isInput" type="checkbox" checked>
+                                <span></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <h3>Select:</h3>
+                        <div class="checkBox">
+                            <label>
+                                <input id="isSelect" type="checkbox" checked>
+                                <span></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Radio:</h3>
+                        <div class="checkBox">
+                            <label>
+                                <input id="isRadio" type="checkbox" checked>
+                                <span></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <h3>CheckBox:</h3>
+                        <div class="checkBox">
+                            <label>
+                                <input id="isCheckBox" type="checkbox" checked>
+                                <span></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Button:</h3>
+                        <div class="checkBox">
+                            <label>
+                                <input id="isButton" type="checkbox" checked>
+                                <span></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="margin: 2em 0;">
+                <input type="button" value="Close" class="closeBtn" onclick="closePanel('settingPanel')">
+            </div>
+        </div>
+    </div>
 
     <script src="./js/icon.js"></script>
 </body>

@@ -9,3 +9,13 @@ function copyCode(id) {
         show.classList.add('show');
     }
 }
+
+function showPanel(id){
+    var panel = document.getElementById(id);
+    panel.style['display'] = 'flex';
+}
+
+function closePanel(id){
+    var panel = document.getElementById(id);
+    panel.style['display'] = 'none';
+}

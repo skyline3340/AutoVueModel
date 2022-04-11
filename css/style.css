@@ -11,7 +11,42 @@ body {
     overflow: auto;
 }
 
-.info {
+.group {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.group textarea {
+    width: 95%;
+    height: 100%;
+    overflow: auto;
+    font-size: 1.2em;
+    border: .2em black solid;
+}
+
+.group label {
+    text-align: center;
+}
+
+.codeDiv {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    height: 85%;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    width: -webkit-fill-available;
+    background-color: white;
+    padding: .5em;
+    border: 1px black solid;
+}
+
+.copyInfo {
     position: absolute;
     width: 15%;
     height: 5%;
@@ -25,72 +60,15 @@ body {
     transition: .5s;
 }
 
-.group {
-    width: 40%;
+.btn {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
-label {
+.btn i{
+    font-size: 2em;
     text-align: center;
-}
-
-li {
-    display: block;
-    margin: .2em;
-}
-
-h4 {
-    display: contents;
-}
-
-.setting {
-    width: 10%;
-    justify-content: center;
-    border: 1px black solid;
-    padding: 0 .2em;
-    margin: 6% 0 3% 1%;
-    /* box-shadow: .2em .2em gray; */
-}
-
-.input {
-    width: 95%;
-    font-size: 1.5em;
-    text-align: center;
-}
-
-.copyBtn {
-    display: flex;
-}
-
-.codeDiv {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    height: 85%;
-}
-
-.code {
-    width: 95%;
-    height: 100%;
-    overflow: auto;
-    font-size: 1.2em;
-    border: .2em black solid;
-}
-
-.conBtn {
-    display: flex;
-    width: 100%;
-}
-
-.list {
-    display: flex;
-    flex-direction: column;
-    width: -webkit-fill-available;
-    background-color: white;
-    padding: .5em;
-    border: 1px black solid;
 }
 
 .show {
