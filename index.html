@@ -16,6 +16,7 @@
             <i class="material-icons">settings</i>
         </button>
     </div>
+
     <div class="group">
         <label>
             <h1>HTML INPUT</h1>
@@ -24,11 +25,13 @@
             <textarea id="InputCode" type="text" rows="45"></textarea>
         </div>
     </div>
+
     <div class="group" style="width: 5%; flex-direction: inherit; flex-basis: content;">
         <button class="btn" onclick="ConvertToVueModel()">
             <i class="medium material-icons">sync</i>
         </button>
     </div>
+
     <div class="group">
         <label>
             <h1>VueModel OUTPUT</h1>
@@ -43,12 +46,19 @@
             <i class="material-icons">content_copy</i>
         </button>
     </div>
+
     <div id="copyInfo" class="copyInfo">
         <h3>Copy Successful!</h3>
     </div>
+    
     <div id="TargetHTMLCode" style="display: none;"></div>
 
     <div class="panel" style="display: none;" id="settingPanel">
+        <div style="display: flex; margin: 0; width: 70em; justify-content: end;">
+            <button onclick="closePanel('settingPanel')" class="closeBtn">
+                <i class="material-icons">close</i>
+            </button>
+        </div>
         <div class="setPanel">
             <div>
                 <label>
@@ -119,15 +129,6 @@
                 </div>
                 <div>
                     <div>
-                        <h3>Select:</h3>
-                        <div class="checkBox">
-                            <label>
-                                <input id="isSelect" type="checkbox" checked>
-                                <span></span>
-                            </label>
-                        </div>
-                    </div>
-                    <div>
                         <h3>Radio:</h3>
                         <div class="checkBox">
                             <label>
@@ -136,13 +137,22 @@
                             </label>
                         </div>
                     </div>
-                </div>
-                <div>
                     <div>
                         <h3>CheckBox:</h3>
                         <div class="checkBox">
                             <label>
                                 <input id="isCheckBox" type="checkbox" checked>
+                                <span></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <h3>Select:</h3>
+                        <div class="checkBox">
+                            <label>
+                                <input id="isSelect" type="checkbox" checked>
                                 <span></span>
                             </label>
                         </div>
@@ -158,13 +168,8 @@
                     </div>
                 </div>
             </div>
-            <div style="margin: 2em 0;">
-                <input type="button" value="Close" class="closeBtn" onclick="closePanel('settingPanel')">
-            </div>
         </div>
     </div>
-
-    <script src="./js/icon.js"></script>
 </body>
 
 </html>
